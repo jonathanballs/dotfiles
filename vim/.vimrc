@@ -13,7 +13,9 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
 Plug 'flazz/vim-colorschemes'
+Plug 'chriskempson/base16-vim'
 
 call plug#end()
 
