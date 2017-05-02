@@ -4,16 +4,22 @@ set number
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/nerdtree'
+" Set directory for plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'gmarik/vundle'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdtree'
+Plug 'flazz/vim-colorschemes'
+
+call plug#end()
 
 filetype on
 
 syntax enable
 colorscheme aqua
 filetype plugin indent on
+
