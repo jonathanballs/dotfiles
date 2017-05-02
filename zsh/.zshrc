@@ -19,15 +19,17 @@ DISABLE_AUTO_UPDATE="false"
 # much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Plugins are in ~/.oh-my-zsh/plugins/
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+#
 # git: git status
 # django: django autocomplete
 # archlinux: pacman autocomplete
 # websearch: includes `google` command
-plugins=(git django archlinux web-search vi-mode colored-man-pages jsontools)
+# vi-mode: extended vim
+# jsontools: supplies pp_json, is_json etc.
+# cp: uses rsync for copying
+plugins=(git django archlinux web-search vi-mode colored-man-pages jsontools cp)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -43,4 +45,10 @@ export LANG=en_GB.UTF-8
 
 # Use websearch function to search google
 alias g="google"
+alias ddv="dd dd status=progress"
+
+# Check the weather
+function wttr {
+    curl wttr.in/$1
+}
 
