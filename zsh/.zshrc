@@ -1,8 +1,9 @@
 # Configurations for zsh
 
 # Path to oh-my-zsh installation.
-  export ZSH=/home/jonathan/.oh-my-zsh
+export ZSH=/home/jonathan/.oh-my-zsh
 
+zle -N up-line-or-history-beginning-search
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="gnzh"
 
@@ -46,6 +47,7 @@ export LANG=en_GB.UTF-8
 # Use websearch function to search google
 alias g="google"
 alias ddv="dd dd status=progress"
+alias rdc="sudo systemctl restart dhcpcd"
 
 # Check the weather
 function wttr {
