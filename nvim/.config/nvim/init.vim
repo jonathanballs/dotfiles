@@ -10,6 +10,7 @@ set shiftwidth=4
 filetype off
 call plug#begin('~/.vim/plugged') " Set directory for plugins
 
+" Normal plugins
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
@@ -18,12 +19,15 @@ Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Language plugins
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'mattn/emmet-vim'
+Plug 'landaire/deoplete-d'
 
 
 call plug#end()
@@ -31,6 +35,9 @@ filetype on
 
 " NerdTree mappings
 map <C-n> :NERDTreeToggle<CR>
+
+" Enable deoplete completions
+call deoplete#enable()
 
 " Airline symbols
 let g:Powerline_symbols = 'fancy'
