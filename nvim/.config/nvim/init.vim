@@ -38,6 +38,8 @@ map <C-n> :NERDTreeToggle<CR>
 
 " Enable deoplete completions
 call deoplete#enable()
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " Airline symbols
 let g:Powerline_symbols = 'fancy'
@@ -60,7 +62,7 @@ filetype plugin indent on
 
 " Set colorscheme
 "colorscheme molokai_dark
-let g:airline_theme='badwolf'
+let g:airline_theme='solarized'
 
 " Full colors
 if $COLORTERM == 'gnome-terminal'
@@ -69,4 +71,11 @@ endif
 
 " Make comments italic
 highlight Comment cterm=italic
+
+" Mark where lines go over 80 chars
+highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
+" Remove trailing whitespace
+map <C-i> :%s/\s\+$//e<CR>
 
