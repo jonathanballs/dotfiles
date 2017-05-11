@@ -21,6 +21,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'majutsushi/tagbar'
 
 " Language plugins
 Plug 'cakebaker/scss-syntax.vim'
@@ -29,12 +30,14 @@ Plug 'digitaltoad/vim-pug'
 Plug 'mattn/emmet-vim'
 Plug 'landaire/deoplete-d'
 
-
 call plug#end()
 filetype on
 
 " NerdTree mappings
 map <C-n> :NERDTreeToggle<CR>
+
+" Tags
+map <C-t> :TagbarToggle<CR>
 
 " Enable deoplete completions
 call deoplete#enable()
