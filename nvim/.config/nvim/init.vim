@@ -76,9 +76,11 @@ endif
 highlight Comment cterm=italic
 
 " Mark where lines go over 80 chars
-highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+"highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
+"match OverLength /\%81v.\+/
 
 " Remove trailing whitespace
 map <C-i> :%s/\s\+$//e<CR>
+
+"setlocal foldmethod=syntax
 
