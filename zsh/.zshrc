@@ -59,3 +59,6 @@ _zsh_cli_fg() { fg; }
 zle -N _zsh_cli_fg
 bindkey '^Z' _zsh_cli_fg
 
+# Add ruby gems to path
+export PATH="/home/jonathan/.gem/ruby/2.4.0/bin:$PATH"
+
