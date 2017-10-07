@@ -48,10 +48,16 @@ export LANG=en_GB.UTF-8
 alias g="google"
 alias ddv="dd dd status=progress"
 alias rdc="sudo systemctl restart dhcpcd"
+alias dc="docker-compose"
 
 # Check the weather
 function wttr {
     curl wttr.in/$1
+}
+
+# Docker attach
+function docka {
+    docker exec -it $1 bash
 }
 
 #
