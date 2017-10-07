@@ -22,6 +22,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'majutsushi/tagbar'
+Plug 'arcticicestudio/nord-vim'
 
 " Language plugins
 Plug 'cakebaker/scss-syntax.vim'
@@ -29,6 +30,8 @@ Plug 'rust-lang/rust.vim'
 Plug 'digitaltoad/vim-pug'
 Plug 'mattn/emmet-vim'
 Plug 'landaire/deoplete-d'
+Plug 'https://github.com/mxw/vim-jsx.git'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 filetype on
@@ -64,8 +67,7 @@ filetype plugin indent on
 :imap jj <Esc>
 
 " Set colorscheme
-"colorscheme molokai_dark
-let g:airline_theme='solarized'
+colorscheme nord
 
 " Full colors
 if $COLORTERM == 'gnome-terminal'
@@ -83,4 +85,7 @@ highlight Comment cterm=italic
 map <C-i> :%s/\s\+$//e<CR>
 
 "setlocal foldmethod=syntax
+
+" .ts for typescript
+autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 
