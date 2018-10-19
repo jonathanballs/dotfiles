@@ -49,6 +49,7 @@ alias g="google"
 alias ddv="dd dd status=progress"
 alias rdc="sudo systemctl restart dhcpcd"
 alias dc="docker-compose"
+alias cat="bat"
 
 # Check the weather
 function wttr {
