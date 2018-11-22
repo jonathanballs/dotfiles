@@ -47,7 +47,6 @@ export LANG=en_GB.UTF-8
 # Use websearch function to search google
 alias g="google"
 alias ddv="dd dd status=progress"
-alias rdc="sudo systemctl restart dhcpcd"
 alias dc="docker-compose"
 
 # Check the weather
@@ -60,6 +59,10 @@ function docka {
     docker exec -it $1 bash
 }
 
+function mkcd() {
+    mkdir -p "$@" && cd $_
+}
+
 #
 _zsh_cli_fg() { fg; }
 zle -N _zsh_cli_fg
@@ -67,4 +70,34 @@ bindkey '^Z' _zsh_cli_fg
 
 # Add ruby gems to path
 export PATH="/home/jonathan/.gem/ruby/2.4.0/bin:$PATH"
+
+# added by travis gem
+[ -f /home/jonathan/.travis/travis.sh ] && source /home/jonathan/.travis/travis.sh
+
+# diff-so-fancy
+function pdiff() {
+    git diff --no-index --color "$@" | diff-so-fancy
+}
+
+# Get the token for logging in
+function kubetoken() {
+    kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
+}
+
+# Open wayland gnome
+alias startw='XDG_SESSION_TYPE=wayland dbus-run-session gnome-session'
+
+# Add gems to PATH
+PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+
+# Change kubernetes context for current shell
+function kubecontexttmp() {
+    export KUBECONFIG=/home/jonathan/.kube/config.$1
+}
+
+# Set user kubernetes cluster
+function kubecontext() {
+    ln -s -f /home/jonathan/.kube/config.$1 /home/jonathan/.kube/config
+    unset KUBECONFIG
+}
 
