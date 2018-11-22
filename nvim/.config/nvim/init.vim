@@ -23,6 +23,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'majutsushi/tagbar'
 Plug 'arcticicestudio/nord-vim'
+Plug 'chrisbra/Colorizer'
 
 " Language plugins
 Plug 'cakebaker/scss-syntax.vim'
@@ -32,9 +33,18 @@ Plug 'mattn/emmet-vim'
 Plug 'landaire/deoplete-d'
 Plug 'https://github.com/mxw/vim-jsx.git'
 Plug 'leafgarland/typescript-vim'
+Plug 'Rip-Rip/clang_complete'
+Plug 'w0rp/ale'
 
 call plug#end()
 filetype on
+
+" path for clang library
+let g:clang_library_path = '/usr/lib/libclang.so'
+let g:ale_completion_enabled = 1
+
+" Open errors
+map <C-x> :lopen<CR>
 
 " NerdTree mappings
 map <C-n> :NERDTreeToggle<CR>
@@ -43,7 +53,8 @@ map <C-n> :NERDTreeToggle<CR>
 map <C-t> :TagbarToggle<CR>
 
 " Enable deoplete completions
-call deoplete#enable()
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#d#dcd_server_autostart = 1
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
@@ -58,6 +69,7 @@ let g:airline_right_sep = '▟'
 " CtrlP shortcut mappings
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 syntax enable
 filetype on
@@ -67,7 +79,7 @@ filetype plugin indent on
 :imap jj <Esc>
 
 " Set colorscheme
-colorscheme nord
+colorscheme dracula
 
 " Full colors
 if $COLORTERM == 'gnome-terminal'
@@ -88,4 +100,7 @@ map <C-i> :%s/\s\+$//e<CR>
 
 " .ts for typescript
 autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+
+" .qss show as css
+au BufReadPost *.qss set syntax=css
 
