@@ -97,7 +97,11 @@ function kubecontexttmp() {
 
 # Set user kubernetes cluster
 function kubecontext() {
-    ln -s -f /home/jonathan/.kube/config.$1 /home/jonathan/.kube/config
+    if [ "$#" -eq 0 ]; then
+        readlink ~/.kube/config | sed -E 's/.+config.//g'
+    else 
+        ln -s -f ~/.kube/config.$1 /home/jonathan/.kube/config
+    fi
     unset KUBECONFIG
 }
 
