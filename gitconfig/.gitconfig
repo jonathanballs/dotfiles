@@ -1,3 +1,17 @@
 [user]
-	email = jonathanballs@protonmail.com
-	name = Jonathan Balls
+    email = jonathanballs@protonmail.com
+    name = Jonathan Balls
+[includeIf "gitdir:~/sd/"]
+    path = ~/sd/.gitconfig
+
+[diff]
+	tool = vimdiff
+
+[alias]
+	lgb = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
+[pull]
+	rebase = false
+[init]
+	defaultBranch = master
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RF

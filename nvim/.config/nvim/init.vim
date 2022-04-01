@@ -20,7 +20,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'majutsushi/tagbar'
 Plug 'arcticicestudio/nord-vim'
 Plug 'chrisbra/Colorizer'
@@ -29,12 +28,15 @@ Plug 'chrisbra/Colorizer'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'digitaltoad/vim-pug'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mattn/emmet-vim'
-Plug 'landaire/deoplete-d'
 Plug 'https://github.com/mxw/vim-jsx.git'
 Plug 'leafgarland/typescript-vim'
 Plug 'Rip-Rip/clang_complete'
 Plug 'w0rp/ale'
+Plug 'chr4/nginx.vim'
+Plug 'jakwings/vim-pony'
+Plug 'keith/swift.vim'
 
 call plug#end()
 filetype on
@@ -53,8 +55,8 @@ map <C-n> :NERDTreeToggle<CR>
 map <C-t> :TagbarToggle<CR>
 
 " Enable deoplete completions
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#d#dcd_server_autostart = 1
+"let g:deoplete#enable_at_startup = 1
+"let g:deoplete#sources#d#dcd_server_autostart = 1
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
@@ -103,4 +105,10 @@ autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 
 " .qss show as css
 au BufReadPost *.qss set syntax=css
+
+" Help for my lazy shift finger :)
+:command WQ wq
+:command Wq wq
+:command W w
+:command Q q
 

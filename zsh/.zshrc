@@ -69,7 +69,7 @@ zle -N _zsh_cli_fg
 bindkey '^Z' _zsh_cli_fg
 
 # Add ruby gems to path
-export PATH="/home/jonathan/.gem/ruby/2.4.0/bin:$PATH"
+export PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
 
 # added by travis gem
 [ -f /home/jonathan/.travis/travis.sh ] && source /home/jonathan/.travis/travis.sh
@@ -85,7 +85,10 @@ function kubetoken() {
 }
 
 # Open wayland gnome
-alias startw='XDG_SESSION_TYPE=wayland dbus-run-session gnome-session'
+alias startwold='XDG_SESSION_TYPE=wayland dbus-run-session gnome-session'
+alias startwold2='MOZ_ENABLE_WAYLAND=1 QT_QPA_PLATFORM=wayland XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session'
+alias startwold3='MOZ_ENABLE_WAYLAND=1 QT_QPA_PLATFORM=wayland XDG_SESSION_TYPE=wayland gnome-shell --wayland'
+alias startw='XDG_SESSION_TYPE=wayland gnome-shell --wayland'
 
 # Add gems to PATH
 PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
@@ -105,3 +108,53 @@ function kubecontext() {
     unset KUBECONFIG
 }
 
+alias rdokku="ssh -t dokku@jnthn.uk"
+
+# Tar helper function for creating archives
+function qtar() {
+    tar -cvf archive.tar.gz "$@"
+}
+
+#alias logmaster=~/coding/logmaster/logmaster
+
+fucntion fix-elasticsearch() {
+    sudo sysctl -w vm.max_map_count=262144
+}
+
+function rewrite-git-email() {
+    git filter-branch -f --env-filter 'if [ "$GIT_AUTHOR_EMAIL" = "jonathanballs@protonmail.com" ]; then 
+     GIT_AUTHOR_EMAIL=jonathan@spotlightdata.co.uk;
+     GIT_AUTHOR_NAME="Jonathan Balls";
+     GIT_COMMITTER_EMAIL=$GIT_AUTHOR_EMAIL;
+     GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"; fi' -- --all
+ }
+
+
+# z - jump around
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/shims:$PATH"
+eval "$(pyenv init -)"
+
+# Neural enhancing images
+alias enhance='function ne() { docker run --rm -v "$(pwd)/`dirname ${@:$#}`":/ne/input -it alexjc/neural-enhance ${@:1:$#-1} "input/`basename ${@:$#}`"; }; ne'
+
+# Stenv
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+alias stenv='pyenv activate venv'
+alias deactivate='pyenv deactivate'
+
+alias :q='exit'
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
