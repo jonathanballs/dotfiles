@@ -48,6 +48,7 @@ export LANG=en_GB.UTF-8
 alias g="google"
 alias ddv="dd dd status=progress"
 alias dc="docker-compose"
+alias cat="bat"
 
 # Check the weather
 function wttr {
