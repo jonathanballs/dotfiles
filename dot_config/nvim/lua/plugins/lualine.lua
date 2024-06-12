@@ -38,7 +38,7 @@ return {
                 always_divide_middle = true,
                 globalstatus = true,
                 component_separators = '|',
-                section_separators = { right = '▒▓█', left = '█▓▒' },
+                section_separators = { left = '', right = '' },
                 disabled_filetypes = {
                     statusline = { 'dashboard', 'NvimTree', 'neo-tree' },
                 },
@@ -48,15 +48,14 @@ return {
                 },
             },
             sections = {
-                lualine_a = {
-                    { 'mode', separator = { left = '▒▓█' }, right_padding = 2 },
-                },
+                lualine_a = { { 'mode', separator = { left = '' }, right_padding = 2 } },
                 lualine_b = { { 'filename', file_status = false, path = 1 }, 'branch' },
                 lualine_c = { 'diff' },
                 lualine_x = { { 'diagnostics', sources = { 'nvim_diagnostic', 'coc' } } },
                 lualine_y = { '%p%%/%L' },
                 lualine_z = {
-                    { 'location', separator = { right = '█▓▒' }, left_padding = 2 },
+                    { 'location', separator = { right = '' }, left_padding = 2 },
+
                 },
             },
             inactive_sections = {},
