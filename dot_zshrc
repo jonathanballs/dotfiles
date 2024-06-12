@@ -1,0 +1,42 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# ZSH
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="gnzh"
+plugins=(git history-substring-search)
+source $ZSH/oh-my-zsh.sh
+
+ZVM_CURSOR_STYLE_ENABLED=false
+
+alias vim="nvim"
+alias dc="docker-compose"
+alias gti=git
+alias sl=ls
+
+. $HOMEBREW_PREFIX/etc/profile.d/z.sh
+
+alias dc="docker-compose"
+
+# Mysql client
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+
+# Unversioned python symlinks
+# export PATH="/opt/homebrew/opt/python@3.11/libexec/bin:$PATH"
+PATH=$(pyenv root)/shims:$PATH
+
+# vim
+bindkey -v
+
+export BAT_THEME=gruvbox-dark
+
+function docka {
+    docker exec -it $1 bash
+}
+
+# bun completions
+[ -s "/Users/jonathanballs/.bun/_bun" ] && source "/Users/jonathanballs/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
