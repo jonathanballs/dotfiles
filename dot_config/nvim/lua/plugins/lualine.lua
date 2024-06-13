@@ -52,7 +52,7 @@ return {
                 lualine_b = { { 'filename', file_status = false, path = 1 }, 'branch' },
                 lualine_c = { 'diff' },
                 lualine_x = { { 'diagnostics', sources = { 'nvim_diagnostic', 'coc' } } },
-                lualine_y = { '%p%%/%L' },
+                lualine_y = { 'filetype', '%p%%/%L' },
                 lualine_z = {
                     { 'location', separator = { right = '' }, left_padding = 2 },
 

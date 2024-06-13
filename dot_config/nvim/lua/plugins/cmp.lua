@@ -45,20 +45,24 @@ return {
             require("luasnip.loaders.from_vscode").lazy_load()
 
             cmp.setup({
+                snippet = {
+                    expand = function(args)
+                        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                    end,
+                },
                 mapping = cmp.mapping.preset.insert({
                     -- `Enter` key to confirm completion
                     ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
                     ["<Tab>"] = cmp.mapping(function(fallback)
-                        if luasnip.expand_or_locally_jumpable() then
-                            luasnip.expand_or_jump()
-                        elseif cmp.visible() then
+                        if cmp.visible() then
                             cmp.confirm({ select = true })
+                        elseif luasnip.locally_jumpable(1) then
+                            luasnip.jump(1)
                         else
                             fallback()
                         end
                     end, { "i", "s" }),
-
 
                     ["<S-Tab>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then
@@ -71,13 +75,19 @@ return {
                     end, { "i", "s" }),
                 }),
                 formatting = {
-                    fields = { "kind", "abbr", "menu" },
-                    expandable_indicator = true,
                     format = function(entry, vim_item)
-                        vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-                        return vim_item
-                    end,
+                        local lspkind_ok, lspkind = pcall(require, "lspkind")
+                        if not lspkind_ok then
+                            -- From kind_icons array
+                            vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
+                            return vim_item
+                        else
+                            -- From lspkind
+                            return lspkind.cmp_format()(entry, vim_item)
+                        end
+                    end
                 },
+
                 window = {
                     completion = cmp.config.window.bordered(),
                     documentation = cmp.config.window.bordered()
@@ -96,16 +106,3 @@ return {
         end
     }
 }
-
--- Ensure leaving luasnip session when
--- vim.api.nvim_create_autocmd('ModeChanged', {
---     pattern = '*',
---     callback = function()
---         if ((vim.v.event.old_mode == 's' and vim.v.event.new_mode == 'n') or vim.v.event.old_mode == 'i')
---             and require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()]
---             and not require('luasnip').session.jump_active
---         then
---             require('luasnip').unlink_current()
---         end
---     end
--- })
