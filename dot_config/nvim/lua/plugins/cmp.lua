@@ -28,11 +28,19 @@ local kind_icons = {
 
 return {
     'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/nvim-cmp',
+    'saadparwaiz1/cmp_luasnip',
     {
         'L3MON4D3/LuaSnip',
         dependencies = {
             "rafamadriz/friendly-snippets",
+        },
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end
+    },
+    {
+        'hrsh7th/nvim-cmp',
+        dependencies = {
             'VonHeikemen/lsp-zero.nvim',
         },
         config = function()
@@ -40,9 +48,7 @@ return {
             lsp_zero = require('lsp-zero')
             lsp_zero.extend_lspconfig()
 
-            local cmp_action = lsp_zero.cmp_action()
             local luasnip = require("luasnip")
-            require("luasnip.loaders.from_vscode").lazy_load()
 
             cmp.setup({
                 snippet = {
@@ -87,7 +93,6 @@ return {
                         end
                     end
                 },
-
                 window = {
                     completion = cmp.config.window.bordered(),
                     documentation = cmp.config.window.bordered()
@@ -96,7 +101,10 @@ return {
                     ghost_text = true,
                     native_menu = false,
                 },
-
+                sources = {
+                    { name = 'luasnip' },
+                    { name = 'nvim_lsp' }
+                }
             })
 
             vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover,
@@ -104,5 +112,6 @@ return {
             vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help,
                 { border = 'rounded' })
         end
+
     }
 }

@@ -44,11 +44,11 @@ vim.keymap.set('n', 'gR', vim.lsp.buf.rename, {})
 -- Open error
 vim.keymap.set('n', 'gE', vim.diagnostic.open_float, {})
 
--- Just use the language defaults
--- vim.expandtab = true
--- vim.softtabstop = 4
--- vim.tabstop = 4
--- vim.shiftwidth = 4
+-- Just set tabs to 2. Otherwise we should make editor configs...
+vim.expandtab = true -- pressing TAB key inserts spaces
+vim.tabstop = 2
+vim.shiftwidth = 2
+vim.softtabstop = 2
 
 -- copy to system clipboard by prepending leader to yank commands
 vim.keymap.set('v', '<leader>y', '"+y')
