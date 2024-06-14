@@ -13,10 +13,9 @@ alias vim="nvim"
 alias dc="docker-compose"
 alias gti=git
 alias sl=ls
+alias dc="docker-compose"
 
 . $HOMEBREW_PREFIX/etc/profile.d/z.sh
-
-alias dc="docker-compose"
 
 # Mysql client
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
