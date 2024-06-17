@@ -14,6 +14,7 @@ alias dc="docker-compose"
 alias gti=git
 alias sl=ls
 alias dc="docker-compose"
+alias cat="bat"
 
 . $HOMEBREW_PREFIX/etc/profile.d/z.sh
 
