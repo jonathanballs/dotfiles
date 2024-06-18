@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>tennis.courts.book.daily</string>
+
+    <key>UserName</key>
+    <string>jonathanballs</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/jonathanballs/code/racket</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>/Users/jonathanballs/.bun/bin/bun</string>
+      <string>prod</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>StartCalendarInterval</key> <!-- ◄ Start job at specified times -->
+    <dict>
+      <key>Hour</key>
+      <integer>20</integer> <!-- ◄ Start at 20:00 -->
+      <key>Minute</key>
+      <integer>00</integer>
+    </dict>
+
+  </dict>
+</plist>
