@@ -23,9 +23,9 @@
     <key>StartCalendarInterval</key> <!-- ◄ Start job at specified times -->
     <dict>
       <key>Hour</key>
-      <integer>20</integer> <!-- ◄ Start at 20:00 -->
+      <integer>19</integer> <!-- ◄ Start at 19:59 -->
       <key>Minute</key>
-      <integer>00</integer>
+      <integer>59</integer>
     </dict>
 
   </dict>
