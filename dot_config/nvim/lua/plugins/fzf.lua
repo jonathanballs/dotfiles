@@ -2,10 +2,6 @@ vim.api.nvim_set_keymap('n', '<C-p>', ':GFiles<CR>', { noremap = true, silent = 
 
 return {
     {
-        "junegunn/fzf",
-        build = "./install --bin"
-    },
-    {
         "ibhagwan/fzf-lua",
         -- optional for icon support
         dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -16,7 +12,6 @@ return {
             })
         end
     },
-    {
-        'junegunn/fzf.vim',
-    }
+    { "junegunn/fzf",    build = "./install --bin" },
+    { 'junegunn/fzf.vim' }
 }

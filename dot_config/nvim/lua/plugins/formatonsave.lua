@@ -12,6 +12,7 @@ return {
             formatter_by_ft = {
                 css = formatters.lsp,
                 elixir = formatters.lsp,
+                astro = formatters.prettierd,
                 html = formatters.prettierd,
                 htmldjango = formatters.shell({
                     cmd = { "djhtml", "%" },
