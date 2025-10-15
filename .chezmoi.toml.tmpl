@@ -1,0 +1,9 @@
+{{- $email := "jonathanballs@protonmail.com" -}}
+{{- $isWorkMachine := stat (joinPath .chezmoi.homeDir ".work-machine") -}}
+
+{{- if $isWorkMachine -}}
+{{-   $email = "jonathan.balls@loveholidays.com" -}}
+{{- end -}}
+
+[data]
+    email = {{ $email | quote }}
