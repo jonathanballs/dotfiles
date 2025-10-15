@@ -16,7 +16,7 @@ return {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
         config = function()
-            lsp_zero = require('lsp-zero')
+            local lsp_zero = require('lsp-zero')
             lsp_zero.on_attach(function(client, bufnr)
                 lsp_zero.default_keymaps({
                     buffer = bufnr,
@@ -37,7 +37,7 @@ return {
     {
         'williamboman/mason-lspconfig.nvim',
         config = function()
-            lsp_zero = require('lsp-zero')
+            local lsp_zero = require('lsp-zero')
             lsp_zero.extend_lspconfig()
 
             require('mason-lspconfig').setup({

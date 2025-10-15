@@ -16,9 +16,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup('plugins')
--- require('languages')
 
-vim.cmd [[colorscheme everforest]]
 -- line to fix border background colour for floating box
 vim.api.nvim_set_hl(0, 'FloatBorder', { link = 'Normal' })
 
@@ -36,8 +34,6 @@ vim.wo.signcolumn = 'yes'
 vim.api.nvim_set_keymap('i', 'jj', '<esc>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('s', 'jj', '<esc>', { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>f', ':Rg<CR>', { noremap = true, silent = true })
-
 -- Rename symbol
 vim.keymap.set('n', 'gR', vim.lsp.buf.rename, {})
 
@@ -45,10 +41,10 @@ vim.keymap.set('n', 'gR', vim.lsp.buf.rename, {})
 vim.keymap.set('n', 'gE', vim.diagnostic.open_float, {})
 
 -- Just set tabs to 2. Otherwise we should make editor configs...
-vim.expandtab = true -- pressing TAB key inserts spaces
-vim.tabstop = 2
-vim.shiftwidth = 2
-vim.softtabstop = 2
+vim.opt.expandtab = true -- pressing TAB key inserts spaces
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 
 -- copy to system clipboard by prepending leader to yank commands
 vim.keymap.set('v', '<leader>y', '"+y')

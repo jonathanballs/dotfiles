@@ -45,7 +45,7 @@ return {
         },
         config = function()
             local cmp = require('cmp')
-            lsp_zero = require('lsp-zero')
+            local lsp_zero = require('lsp-zero')
             lsp_zero.extend_lspconfig()
 
             local luasnip = require("luasnip")
