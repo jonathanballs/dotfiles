@@ -9,7 +9,7 @@ import json
 import urllib.request
 
 # Filters to decide which crossword to take. Not all are available every day.
-PRECEDENCE = ["concise", "cryptic", "quick-cryptic", "tempora"]
+PRECEDENCE = ["quick-cryptic", "o-tempora", "cryptic", "concise"]
 
 
 def find_crossword_link():
