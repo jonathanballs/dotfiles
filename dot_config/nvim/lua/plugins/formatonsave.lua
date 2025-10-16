@@ -20,12 +20,10 @@ return {
             markdown = { "prettierd", "prettier", stop_after_first = true },
             css = { "prettierd", "prettier", stop_after_first = true },
             scss = { "prettierd", "prettier", stop_after_first = true },
-{{- if not (stat (joinPath .chezmoi.homeDir ".work-machine")) }}
             javascript = { "prettierd", "prettier", stop_after_first = true },
             javascriptreact = { "prettierd", "prettier", stop_after_first = true },
             typescript = { "prettierd", "prettier", stop_after_first = true },
             typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-{{- end }}
             json = { "prettierd", "prettier", stop_after_first = true },
 
             -- Python
@@ -43,15 +41,6 @@ return {
             if bufname:match("/node_modules/") or bufname:match(".local/share/nvim/lazy") then
                 return
             end
-{{- if stat (joinPath .chezmoi.homeDir ".work-machine") }}
-
-            -- On work machine: disable format-on-save for JS/TS/React
-            local filetype = vim.bo[bufnr].filetype
-            if filetype == "javascript" or filetype == "javascriptreact" or
-               filetype == "typescript" or filetype == "typescriptreact" then
-                return
-            end
-{{- end }}
 
             return {
                 timeout_ms = 500,
