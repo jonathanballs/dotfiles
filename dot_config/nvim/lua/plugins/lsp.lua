@@ -41,7 +41,11 @@ return {
             lsp_zero.extend_lspconfig()
 
             require('mason-lspconfig').setup({
-                ensure_installed = {},
+                ensure_installed = {
+                    'ts_ls',      -- TypeScript/JavaScript
+                    'elixirls',   -- Elixir
+                    'lua_ls',     -- Lua (for Neovim config)
+                },
                 handlers = { lsp_zero.default_setup, },
             })
         end,
