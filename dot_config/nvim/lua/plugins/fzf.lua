@@ -5,6 +5,11 @@ return {
         config = function()
             require("fzf-lua").setup({
                 fzf_opts = { ['--layout'] = 'default' },
+                git = {
+                    files = {
+                        cmd = 'git ls-files --cached --others --exclude-standard',
+                    },
+                },
             })
         end,
         keys = {
