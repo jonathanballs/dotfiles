@@ -38,7 +38,11 @@ return {
         format_on_save = function(bufnr)
             -- Disable formatting on certain paths
             local bufname = vim.api.nvim_buf_get_name(bufnr)
-            if bufname:match("/node_modules/") or bufname:match(".local/share/nvim/lazy") then
+            if bufname:match("/node_modules/")
+                or bufname:match(".local/share/nvim/lazy")
+                or bufname:match("/code/horizon/")
+                or bufname:match("/code/sunrise/")
+                or bufname:match("/code/aurora/") then
                 return
             end
 

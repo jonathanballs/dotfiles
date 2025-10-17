@@ -58,11 +58,9 @@ return {
             type = "group",
             val = {
                 dashboard.button("n f", "  New File", ":ene <BAR> startinsert<CR>"),
-                dashboard.button("f f", "  Find File", ":Telescope find_files<CR>"),
+                dashboard.button("f f", "  Find File", ":lua require('fzf-lua').git_files()<CR>"),
                 dashboard.button("g c", "󰐱  " .. lines[2],
                     '<Cmd>call jobstart(["open", expand("' .. lines[1] .. '")], {"detach": v:true})<CR>'),
-                -- dashboard.button("g c", "  14d Capitol out of sight (7)", ":Telescope marks<CR>"),
-                -- dashboard.button("q q", "  Quit Nvim", ":qa<CR>")
             },
             opts = {
                 spacing = 1,
